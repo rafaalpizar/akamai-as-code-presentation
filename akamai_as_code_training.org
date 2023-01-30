@@ -1,0 +1,236 @@
+#+TITLE: Akamai As Code Training
+#+SUBTITLE: GIT - CLI
+#+DATE: <2023-01-30 Mon 16:22>
+
+:REVEAL_PROPERTIES:
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_REVEAL_JS_VERSION: 4
+#+REVEAL_THEME: serif
+#+REVEAL_INIT_OPTIONS: slideNumber:true
+#+OPTIONS: timestamp:nil toc:1 num:1 author:nil
+:END:
+
+#+begin_export html
+<style>
+#sec-title-slide {font-size: 60%;}
+</style>
+#+end_export
+
+
+* GIT Basics
+** GIT Basic Configuration - Identity
+#+begin_example
+- git config --global user.name Your Name
+- git config --global user.email your@email.com
+#+end_example
+
+
+** GIT Basic Configuration - Alias
+#+begin_example
+- git config --global alias.co commit
+- git config --global alias.st status
+- git config --global alias.br branch
+- git config --global alias.l log --oneline -10
+- git config --global alias.ltree log --color --graph
+  --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Creset %s
+  %Cgreen(%cr)%C(bold blue) <%an> %Creset' --abbrev-commit
+  --date-order
+#+end_example
+
+* Akamai CLI
+** General Akamai CLI usage
+#+begin_example
+akamai [global flags] command [command flags] [arguments...]
+#+end_example
+
+** Akamai CLI – Getting Help
+#+REVEAL_HTML: <div style="color: green">
+Example how to get help from a command (it apply to any command)
+#+REVEAL_HTML: </div>
+#+begin_example
+- akamai pm -h
+- akamai pm command -h
+#+end_example
+ 
+* Akamai CLI - DNS
+** Akamai CLI – DNS – Create Zone
+#+REVEAL_HTML: <div style="color: green">
+Example create DNS zone
+#+REVEAL_HTML: </div>
+#+begin_example
+akamai --accountkey accountID dns create-zoneconfig newzone.com
+--type primary --contractid contractID --groupid groupID
+--initialize
+#+end_example
+
+** Akamai CLI – DNS – Create Record
+#+REVEAL_HTML: <div style="color: green">
+Example create a CName entry
+#+REVEAL_HTML: </div>
+#+begin_example
+akamai dns --accountkey accountID create-recordset newzone.com
+--name newrecord.newzone.com --type cname –ttl seconds
+--rdata FQDN
+#+end_example
+
+** Akamai CLI – DNS – List
+#+REVEAL_HTML: <div style="color: green">
+Example list DNS zone information
+#+REVEAL_HTML: </div>
+#+begin_example
+akamai dns --accountkey accountID list-zoneconfig --search newzone.com
+#+end_example
+
+#+REVEAL_HTML: <div style="color: green">
+Example list DNS record information
+#+REVEAL_HTML: </div>
+#+begin_example
+akamai dns --accountkey accountID list-recordsets newrecord.newzone.com
+#+end_example
+
+* Akamai CLI - PM
+** Akamai CLI – PM – New Property
+#+REVEAL_HTML: <div style="color: green">
+Create a new PM property based on template
+#+REVEAL_HTML: </div>
+
+#+begin_example
+akamai pm -a accountID new-property -e template.config.com_pm
+-n template_version -p newconfig.name.com_pm
+#+end_example
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+#+begin_example
+-e, --propertyId <propertyId/propertyName> Optional. Use an existing
+property as the blueprint for the new one. Enter either a property ID
+or an exact property name. The CLI looks up the group ID, contract ID,
+and product ID of the existing property and uses that data to create a
+new property.
+
+-n, --propver <propver> Add only if using a property as a
+template. Enter the version of the existing property to use as the
+blueprint. Uses latest version if omitted.
+
+-p, --property <propertyName> Property name. Optional if a default
+property was previously set with the set-default command.
+#+end_example
+#+REVEAL_HTML: </div>
+
+** Akamai CLI – PM – Property Update
+#+REVEAL_HTML: <div style="color: green">
+Update PM property configuration with json file
+#+REVEAL_HTML: </div>
+#+begin_example
+akamai pm -a accountID property-update --note "Version note"
+-p newconfig.name.com_pm --propver configversion --file logic.json
+#+end_example
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+#+begin_example
+--file <file> Specify the JSON file containing the rules. PM json
+specifications:
+https://techdocs.akamai.com/property-mgr/reference/rule-trees
+
+--note <message> Alias of --message. Add comments for the
+property. -p, --property <property> The name or ID of the property you
+are updating. --propver <propver> Optional. Select the property
+version to update
+#+end_example
+#+REVEAL_HTML: </div>
+
+** Akamai CLI – PM – JSON
+- PM Rule Tree Specification
+- Parent Rule match and behaviors
+- Default Rule behaviors PM Variables definitions
+
+** Akamai CLI – PM – Match
+Match general format has two objects:
+- Name
+- Options
+
+Rule tree criteria specification
+
+** Akamai CLI – PM – Behaviors
+Behavior general format has two objects:
+- Name
+- Options
+
+Rule tree behavior specification
+
+** Akamai CLI – PM – Property Activation
+#+REVEAL_HTML: <div style="color: green">
+Activate an Akamai PM property
+#+REVEAL_HTML: </div>
+#+begin_example
+akamai pm -a accountID activate-version -m "Activation note"
+-e email -p newconfig.name.com_pm --propver configversion
+--file logic.json
+#+end_example
+
+#+REVEAL_HTML: <div style="font-size: 80%;">
+#+begin_example
+--file <file> Specify the JSON file containing the rules. PM json
+specifications:
+https://techdocs.akamai.com/property-mgr/reference/rule-trees
+
+--note <message> Alias of --message. Add comments for the property.
+
+-p, --property <property> The name or ID of the property you are
+updating.
+
+--propver <propver> Optional. Select the property version to update
+#+end_example
+#+REVEAL_HTML: </div>
+
+* Akamai CLI - Pipeline
+** Akamai CLI – Pipeline - Create
+#+begin_example
+Usage: akamai pipeline new-pipeline|np [options] <environments...>
+#+end_example
+#+begin_example
+akamai pipeline -a accountID new-pipeline -e template_property_pm 
+-n template_version
+-p new_pipeline_name <space separated environments>
+#+end_example
+#+REVEAL_HTML: <div style="font-size: 80%;">
+#+begin_example
+-e, --propertyId <propertyId/propertyName> Optional. Use an existing
+property as the blueprint for the new one. Enter either a property ID
+or an exact property name. The CLI looks up the group ID, contract ID,
+and product ID of the existing property and uses that data to create a
+new property.
+
+-n, --propver <propver> Add only if using a property as a
+template. Enter the version of the existing property to use as the
+blueprint. Uses latest version if omitted.
+
+-p, --property <propertyName> Property name.
+#+end_example
+#+REVEAL_HTML: </div>
+
+** Akamai CLI – Pipeline - Tree
+#+ATTR_HTML: :style font-size:30%
+#+begin_example
+# example
+akamai pipeline -a accoundID new-pipeline -e a_config_as_template_pm -n template_version -p new_pipeline demo1 demo2 demo3
+#+end_example
+
+#+ATTR_HTML: :width 45% :align center
+https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/EmacsIcon.svg/1200px-EmacsIcon.svg.png
+
+** Akamai CLI – Pipeline - Merge
+#+REVEAL_HTML: <div style="color: green">
+Pipeline merge an environment
+#+REVEAL_HTML: </div>
+#+begin_example
+akamai pipeline merge -n -p pipeline_name environment
+#+end_example
+
+#+begin_example
+-n, --no-validate Merge the environment without validating.
+
+-p, --pipeline <pipelineName> Pipeline name.
+#+end_example
+
+
+
