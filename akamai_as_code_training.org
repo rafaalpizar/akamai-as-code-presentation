@@ -12,7 +12,7 @@
 
 #+begin_export html
 <style>
-#sec-title-slide {font-size: 60%;}
+#sec-title-slide {font-size:60%;}
 </style>
 #+end_export
 
@@ -43,6 +43,8 @@
 akamai [global flags] command [command flags] [arguments...]
 #+end_example
 
+[[./images/01_akamai_cli.jpg]]
+
 ** Akamai CLI – Getting Help
 #+REVEAL_HTML: <div style="color: green">
 Example how to get help from a command (it apply to any command)
@@ -51,7 +53,9 @@ Example how to get help from a command (it apply to any command)
 - akamai pm -h
 - akamai pm command -h
 #+end_example
- 
+#+ATTR_HTML: :width 70%
+[[./images/02_akamai_cli_help.jpg]]
+
 * Akamai CLI - DNS
 ** Akamai CLI – DNS – Create Zone
 #+REVEAL_HTML: <div style="color: green">
@@ -139,23 +143,21 @@ version to update
 #+REVEAL_HTML: </div>
 
 ** Akamai CLI – PM – JSON
-- PM Rule Tree Specification
-- Parent Rule match and behaviors
-- Default Rule behaviors PM Variables definitions
+[[./images/03_akamai_cli_json.jpg]]
+#+ATTR_HTML: :target _blank” :style color:blue; font-size:20px; text-decoration:underline;
+[[https://techdocs.akamai.com/property-mgr/reference/the-default-rule][PM Rule Tree Specification]]
 
 ** Akamai CLI – PM – Match
-Match general format has two objects:
-- Name
-- Options
-
-Rule tree criteria specification
+#+ATTR_HTML: :width 50%
+[[./images/04_akamai_match.jpg]]
+#+ATTR_HTML: :target _blank” :style color:blue; font-size:20px; text-decoration:underline;
+[[https://techdocs.akamai.com/property-mgr/reference/criteria-1][Rule tree criteria specification]]
 
 ** Akamai CLI – PM – Behaviors
-Behavior general format has two objects:
-- Name
-- Options
-
-Rule tree behavior specification
+#+ATTR_HTML: :width 50%
+[[./images/05_akamai_behavior.jpg]]
+#+ATTR_HTML: :target _blank” :style color:blue; font-size:20px; text-decoration:underline;
+[[https://techdocs.akamai.com/property-mgr/reference/behaviors-1][Rule tree behavior specification]]
 
 ** Akamai CLI – PM – Property Activation
 #+REVEAL_HTML: <div style="color: green">
@@ -215,8 +217,7 @@ blueprint. Uses latest version if omitted.
 akamai pipeline -a accoundID new-pipeline -e a_config_as_template_pm -n template_version -p new_pipeline demo1 demo2 demo3
 #+end_example
 
-#+ATTR_HTML: :width 45% :align center
-https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/EmacsIcon.svg/1200px-EmacsIcon.svg.png
+[[./images/06_akamai_pipeline_tree.jpg]]
 
 ** Akamai CLI – Pipeline - Merge
 #+REVEAL_HTML: <div style="color: green">
@@ -232,5 +233,6 @@ akamai pipeline merge -n -p pipeline_name environment
 -p, --pipeline <pipelineName> Pipeline name.
 #+end_example
 
+[[./images/07_akamai_pipeline_merge.jpg]]
 
 
