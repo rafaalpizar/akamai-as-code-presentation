@@ -13,6 +13,8 @@
 #+begin_export html
 <style>
 #sec-title-slide {font-size:60%;}
+.reveal .subtitle {font-size:180%}
+.reveal .date {font-size:60%}
 </style>
 #+end_export
 
@@ -220,6 +222,10 @@ akamai pipeline -a accoundID new-pipeline -e a_config_as_template_pm -n template
 
 [[./images/06_akamai_pipeline_tree.jpg]]
 
+** Akamai CLI – Pipeline - Variables
+#+ATTR_HTML: :style font-size:30%; text-align-last: center;
+| Template File                             | variableDefinitions.json                    | variables.json (environment)                |
+| [[./images/08_akamai_pipeline_variables.jpg]] | [[./images/09_akamai_pipeline_variables_2.jpg]] | [[./images/10_akamai_pipeline_variables_3.jpg]] |
 ** Akamai CLI – Pipeline - Merge
 #+REVEAL_HTML: <div style="color: green">
 Pipeline merge an environment

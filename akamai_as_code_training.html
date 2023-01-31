@@ -24,11 +24,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org783fcc3">1. GIT Basics</a></li>
-<li><a href="#/slide-orgcae8e87">2. Akamai CLI</a></li>
-<li><a href="#/slide-orgbbd7ed9">3. Akamai CLI - DNS</a></li>
-<li><a href="#/slide-org4e3aa64">4. Akamai CLI - PM</a></li>
-<li><a href="#/slide-org8fa9c4d">5. Akamai CLI - Pipeline</a></li>
+<li><a href="#/slide-orgd7d68f6">1. GIT Basics</a></li>
+<li><a href="#/slide-orgb3c9156">2. Akamai CLI</a></li>
+<li><a href="#/slide-org9daec1f">3. Akamai CLI - DNS</a></li>
+<li><a href="#/slide-org8bb377c">4. Akamai CLI - PM</a></li>
+<li><a href="#/slide-org4252374">5. Akamai CLI - Pipeline</a></li>
 </ul>
 </div>
 </div>
@@ -36,27 +36,29 @@
 
 <style>
 #sec-title-slide {font-size:60%;}
+.reveal .subtitle {font-size:180%}
+.reveal .date {font-size:60%}
 </style>
 
 
 <section>
-<section id="slide-org783fcc3">
-<h2 id="org783fcc3"><span class="section-number-2">1.</span> GIT Basics</h2>
+<section id="slide-orgd7d68f6">
+<h2 id="orgd7d68f6"><span class="section-number-2">1.</span> GIT Basics</h2>
 <div class="outline-text-2" id="text-1">
 </div>
 </section>
-<section id="slide-org80977ee">
-<h3 id="org80977ee">GIT Basic Configuration - Identity</h3>
-<pre class="example" id="orgf96eb64">
+<section id="slide-org7daeaed">
+<h3 id="org7daeaed">GIT Basic Configuration - Identity</h3>
+<pre class="example" id="org1021f5f">
 - git config --global user.name Your Name
 - git config --global user.email your@email.com
 </pre>
 
 
 </section>
-<section id="slide-org8a55974">
-<h3 id="org8a55974">GIT Basic Configuration - Alias</h3>
-<pre class="example" id="org7550a28">
+<section id="slide-org3d6c1c4">
+<h3 id="org3d6c1c4">GIT Basic Configuration - Alias</h3>
+<pre class="example" id="org349e196">
 - git config --global alias.co commit
 - git config --global alias.st status
 - git config --global alias.br branch
@@ -70,37 +72,37 @@
 </section>
 </section>
 <section>
-<section id="slide-orgcae8e87">
-<h2 id="orgcae8e87"><span class="section-number-2">2.</span> Akamai CLI</h2>
+<section id="slide-orgb3c9156">
+<h2 id="orgb3c9156"><span class="section-number-2">2.</span> Akamai CLI</h2>
 <div class="outline-text-2" id="text-2">
 </div>
 </section>
-<section id="slide-org8618af7">
-<h3 id="org8618af7">General Akamai CLI usage</h3>
-<pre class="example" id="orga55908c">
+<section id="slide-orgfb64c8d">
+<h3 id="orgfb64c8d">General Akamai CLI usage</h3>
+<pre class="example" id="org5b16ad3">
 akamai [global flags] command [command flags] [arguments...]
 </pre>
 
 
-<div id="org8edda4e" class="figure">
+<div id="org322defd" class="figure">
 <p><img src="./images/01_akamai_cli.jpg" alt="01_akamai_cli.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-org414ce2c">
-<h3 id="org414ce2c">Akamai CLI – Getting Help</h3>
+<section id="slide-org923b935">
+<h3 id="org923b935">Akamai CLI – Getting Help</h3>
 <div style="color: green">
 <p>
 Example how to get help from a command (it apply to any command)
 </p>
 </div>
-<pre class="example" id="org4d225c7">
+<pre class="example" id="org1907ac1">
 - akamai pm -h
 - akamai pm command -h
 </pre>
 
-<div id="orgdea1996" class="figure">
+<div id="orge1f325e" class="figure">
 <p><img src="./images/02_akamai_cli_help.jpg" alt="02_akamai_cli_help.jpg" width="70%" />
 </p>
 </div>
@@ -108,47 +110,47 @@ Example how to get help from a command (it apply to any command)
 </section>
 </section>
 <section>
-<section id="slide-orgbbd7ed9">
-<h2 id="orgbbd7ed9"><span class="section-number-2">3.</span> Akamai CLI - DNS</h2>
+<section id="slide-org9daec1f">
+<h2 id="org9daec1f"><span class="section-number-2">3.</span> Akamai CLI - DNS</h2>
 <div class="outline-text-2" id="text-3">
 </div>
 </section>
-<section id="slide-org140c3c6">
-<h3 id="org140c3c6">Akamai CLI – DNS – Create Zone</h3>
+<section id="slide-org1a854af">
+<h3 id="org1a854af">Akamai CLI – DNS – Create Zone</h3>
 <div style="color: green">
 <p>
 Example create DNS zone
 </p>
 </div>
-<pre class="example" id="orgc9307a8">
+<pre class="example" id="org9c34938">
 akamai --accountkey accountID dns create-zoneconfig newzone.com
 --type primary --contractid contractID --groupid groupID
 --initialize
 </pre>
 
 </section>
-<section id="slide-orga25b878">
-<h3 id="orga25b878">Akamai CLI – DNS – Create Record</h3>
+<section id="slide-orgf82c5d4">
+<h3 id="orgf82c5d4">Akamai CLI – DNS – Create Record</h3>
 <div style="color: green">
 <p>
 Example create a CName entry
 </p>
 </div>
-<pre class="example" id="org6803f5e">
+<pre class="example" id="orgfc0c295">
 akamai dns --accountkey accountID create-recordset newzone.com
 --name newrecord.newzone.com --type cname –ttl seconds
 --rdata FQDN
 </pre>
 
 </section>
-<section id="slide-orgb349d84">
-<h3 id="orgb349d84">Akamai CLI – DNS – List</h3>
+<section id="slide-orgc0e2f17">
+<h3 id="orgc0e2f17">Akamai CLI – DNS – List</h3>
 <div style="color: green">
 <p>
 Example list DNS zone information
 </p>
 </div>
-<pre class="example" id="org82438e6">
+<pre class="example" id="org152764b">
 akamai dns --accountkey accountID list-zoneconfig --search newzone.com
 </pre>
 
@@ -157,33 +159,33 @@ akamai dns --accountkey accountID list-zoneconfig --search newzone.com
 Example list DNS record information
 </p>
 </div>
-<pre class="example" id="org805aa10">
+<pre class="example" id="org739ec78">
 akamai dns --accountkey accountID list-recordsets newrecord.newzone.com
 </pre>
 
 </section>
 </section>
 <section>
-<section id="slide-org4e3aa64">
-<h2 id="org4e3aa64"><span class="section-number-2">4.</span> Akamai CLI - PM</h2>
+<section id="slide-org8bb377c">
+<h2 id="org8bb377c"><span class="section-number-2">4.</span> Akamai CLI - PM</h2>
 <div class="outline-text-2" id="text-4">
 </div>
 </section>
-<section id="slide-org869a05f">
-<h3 id="org869a05f">Akamai CLI – PM – New Property</h3>
+<section id="slide-org211b9a3">
+<h3 id="org211b9a3">Akamai CLI – PM – New Property</h3>
 <div style="color: green">
 <p>
 Create a new PM property based on template
 </p>
 </div>
 
-<pre class="example" id="org5bb5e36">
+<pre class="example" id="org2a11d44">
 akamai pm -a accountID new-property -e template.config.com_pm
 -n template_version -p newconfig.name.com_pm
 </pre>
 
 <div style="font-size: 80%;color: gray; margin-top: 8%">
-<pre class="example" id="orga3f5254">
+<pre class="example" id="org06941b6">
 -e, --propertyId &lt;propertyId/propertyName&gt; Optional. Use an existing
 property as the blueprint for the new one. Enter either a property ID
 or an exact property name. The CLI looks up the group ID, contract ID,
@@ -200,20 +202,20 @@ property was previously set with the set-default command.
 </div>
 
 </section>
-<section id="slide-orgfa083ae">
-<h3 id="orgfa083ae">Akamai CLI – PM – Property Update</h3>
+<section id="slide-org0adb165">
+<h3 id="org0adb165">Akamai CLI – PM – Property Update</h3>
 <div style="color: green">
 <p>
 Update PM property configuration with json file
 </p>
 </div>
-<pre class="example" id="org428350b">
+<pre class="example" id="org8d4126f">
 akamai pm -a accountID property-update --note "Version note"
 -p newconfig.name.com_pm --propver configversion --file logic.json
 </pre>
 
 <div style="font-size: 80%;color: gray; margin-top: 8%">
-<pre class="example" id="org36abb33">
+<pre class="example" id="org0400910">
 --file &lt;file&gt; Specify the JSON file containing the rules. PM json
 specifications:
 https://techdocs.akamai.com/property-mgr/reference/rule-trees
@@ -226,10 +228,10 @@ version to update
 </div>
 
 </section>
-<section id="slide-orged45c56">
-<h3 id="orged45c56">Akamai CLI – PM – JSON</h3>
+<section id="slide-orgb15bfc8">
+<h3 id="orgb15bfc8">Akamai CLI – PM – JSON</h3>
 
-<div id="org729c100" class="figure">
+<div id="orgfe337ac" class="figure">
 <p><img src="./images/03_akamai_cli_json.jpg" alt="03_akamai_cli_json.jpg" />
 </p>
 </div>
@@ -238,10 +240,10 @@ version to update
 </p>
 
 </section>
-<section id="slide-org35cedd0">
-<h3 id="org35cedd0">Akamai CLI – PM – Match</h3>
+<section id="slide-org55c120a">
+<h3 id="org55c120a">Akamai CLI – PM – Match</h3>
 
-<div id="org98ef66a" class="figure">
+<div id="org9722a61" class="figure">
 <p><img src="./images/04_akamai_match.jpg" alt="04_akamai_match.jpg" width="50%" />
 </p>
 </div>
@@ -250,10 +252,10 @@ version to update
 </p>
 
 </section>
-<section id="slide-org704198e">
-<h3 id="org704198e">Akamai CLI – PM – Behaviors</h3>
+<section id="slide-orge4dd014">
+<h3 id="orge4dd014">Akamai CLI – PM – Behaviors</h3>
 
-<div id="orgae069ea" class="figure">
+<div id="org515db94" class="figure">
 <p><img src="./images/05_akamai_behavior.jpg" alt="05_akamai_behavior.jpg" width="50%" />
 </p>
 </div>
@@ -262,21 +264,21 @@ version to update
 </p>
 
 </section>
-<section id="slide-orgf64ad88">
-<h3 id="orgf64ad88">Akamai CLI – PM – Property Activation</h3>
+<section id="slide-org50518e9">
+<h3 id="org50518e9">Akamai CLI – PM – Property Activation</h3>
 <div style="color: green">
 <p>
 Activate an Akamai PM property
 </p>
 </div>
-<pre class="example" id="orgb8890db">
+<pre class="example" id="orgb101557">
 akamai pm -a accountID activate-version -m "Activation note"
 -e email -p newconfig.name.com_pm --propver configversion
 --file logic.json
 </pre>
 
 <div style="font-size: 80%;color: gray; margin-top: 8%">
-<pre class="example" id="orgcebe23f">
+<pre class="example" id="org628d288">
 --file &lt;file&gt; Specify the JSON file containing the rules. PM json
 specifications:
 https://techdocs.akamai.com/property-mgr/reference/rule-trees
@@ -293,24 +295,24 @@ updating.
 </section>
 </section>
 <section>
-<section id="slide-org8fa9c4d">
-<h2 id="org8fa9c4d"><span class="section-number-2">5.</span> Akamai CLI - Pipeline</h2>
+<section id="slide-org4252374">
+<h2 id="org4252374"><span class="section-number-2">5.</span> Akamai CLI - Pipeline</h2>
 <div class="outline-text-2" id="text-5">
 </div>
 </section>
-<section id="slide-org26b24a3">
-<h3 id="org26b24a3">Akamai CLI – Pipeline - Create</h3>
-<pre class="example" id="org338df2d">
+<section id="slide-org5cd7984">
+<h3 id="org5cd7984">Akamai CLI – Pipeline - Create</h3>
+<pre class="example" id="org81a601c">
 Usage: akamai pipeline new-pipeline|np [options] &lt;environments...&gt;
 </pre>
-<pre class="example" id="orgafff797">
+<pre class="example" id="org3608adb">
 akamai pipeline -a accountID new-pipeline -e template_property_pm 
 -n template_version
 -p new_pipeline_name &lt;space separated environments&gt;
 </pre>
 
 <div style="font-size: 80%;color: gray; margin-top: 8%">
-<pre class="example" id="org1d54cda">
+<pre class="example" id="orgddf5a1e">
 -e, --propertyId &lt;propertyId/propertyName&gt; Optional. Use an existing
 property as the blueprint for the new one. Enter either a property ID
 or an exact property name. The CLI looks up the group ID, contract ID,
@@ -326,39 +328,66 @@ blueprint. Uses latest version if omitted.
 </div>
 
 </section>
-<section id="slide-org1dba022">
-<h3 id="org1dba022">Akamai CLI – Pipeline - Tree</h3>
-<pre class="example" style="font-size:30%" id="org96f3217">
+<section id="slide-org54df92b">
+<h3 id="org54df92b">Akamai CLI – Pipeline - Tree</h3>
+<pre class="example" style="font-size:30%" id="orgf82845a">
 # example
 akamai pipeline -a accoundID new-pipeline -e a_config_as_template_pm -n template_version -p new_pipeline demo1 demo2 demo3
 </pre>
 
 
-<div id="org83df43a" class="figure">
+<div id="orge7c8cc7" class="figure">
 <p><img src="./images/06_akamai_pipeline_tree.jpg" alt="06_akamai_pipeline_tree.jpg" />
 </p>
 </div>
 
 </section>
-<section id="slide-orgb2795a0">
-<h3 id="orgb2795a0">Akamai CLI – Pipeline - Merge</h3>
+<section id="slide-org41e3a7e">
+<h3 id="org41e3a7e">Akamai CLI – Pipeline - Variables</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" style="font-size:30%; text-align-last: center;">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Template File</td>
+<td class="org-left">variableDefinitions.json</td>
+<td class="org-left">variables.json (environment)</td>
+</tr>
+
+<tr>
+<td class="org-left"><img src="./images/08_akamai_pipeline_variables.jpg" alt="08_akamai_pipeline_variables.jpg" /></td>
+<td class="org-left"><img src="./images/09_akamai_pipeline_variables_2.jpg" alt="09_akamai_pipeline_variables_2.jpg" /></td>
+<td class="org-left"><img src="./images/10_akamai_pipeline_variables_3.jpg" alt="10_akamai_pipeline_variables_3.jpg" /></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-org663fdfe">
+<h3 id="org663fdfe">Akamai CLI – Pipeline - Merge</h3>
 <div style="color: green">
 <p>
 Pipeline merge an environment
 </p>
 </div>
-<pre class="example" id="org760bb68">
+<pre class="example" id="org95abe7b">
 akamai pipeline merge -n -p pipeline_name environment
 </pre>
 
 <div style="font-size: 80%;color: gray; margin-top: 5%">
-<pre class="example" id="org57fbc79">
+<pre class="example" id="orgdf0dfd5">
 -n, --no-validate Merge the environment without validating.
 -p, --pipeline &lt;pipelineName&gt; Pipeline name.
 </pre>
 
 
-<div id="org27df664" class="figure">
+<div id="orgc05b240" class="figure">
 <p><img src="./images/07_akamai_pipeline_merge.jpg" alt="07_akamai_pipeline_merge.jpg" />
 </p>
 </div>
