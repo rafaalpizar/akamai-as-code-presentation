@@ -55,7 +55,7 @@ Example how to get help from a command (it apply to any command)
 - akamai pm -h
 - akamai pm command -h
 #+end_example
-#+ATTR_HTML: :width 70%
+#+ATTR_HTML: :width 60%
 [[./images/02_akamai_cli_help.jpg]]
 
 * Akamai CLI - DNS
@@ -173,6 +173,7 @@ version to update
 #+REVEAL_HTML: </div>
 
 ** Akamai CLI – PM – JSON
+#+ATTR_HTML: :width 90%
 [[./images/03_akamai_cli_json.jpg]]
 #+ATTR_HTML: :target _blank” :style color:blue; font-size:20px; text-decoration:underline;
 [[https://techdocs.akamai.com/property-mgr/reference/the-default-rule][PM Rule Tree Specification]]
