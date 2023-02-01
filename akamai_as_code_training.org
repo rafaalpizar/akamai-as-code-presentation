@@ -273,6 +273,5 @@ akamai pipeline merge -n -p pipeline_name environment
 [[./images/07_akamai_pipeline_merge.jpg]]
 
 
-
 * Thank you
 Any question?
