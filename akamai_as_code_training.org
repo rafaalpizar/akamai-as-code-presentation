@@ -95,7 +95,7 @@ akamai dns --accountkey accountID list-recordsets newrecord.newzone.com
 #+end_example
 
 * Akamai CLI - PM
-** Akamai CLI – PM – New Property
+** Akamai CLI – PM – New Property with Template
 #+REVEAL_HTML: <div style="color: green">
 Create a new PM property based on template
 #+REVEAL_HTML: </div>
@@ -121,6 +121,34 @@ blueprint. Uses latest version if omitted.
 property was previously set with the set-default command.
 #+end_example
 #+REVEAL_HTML: </div>
+
+** Akamai CLI – PM – New Property with no Template
+#+REVEAL_HTML: <div style="color: green">
+Create a new PM property based on product ID
+#+REVEAL_HTML: </div>
+
+#+begin_example
+akamai pm -a accountID new-property -c contractId -g groupId
+-d productId -p newconfig.name.com_pm
+#+end_example
+
+#+REVEAL_HTML: <div style="font-size: 80%;color: gray; margin-top: 8%">
+#+begin_example
+-c, --contractId <contractId> Enter the contract ID to use. Optional
+if using -e with a property ID or name.
+
+-d, --productId <productId> Enter the product ID to use. Optional if
+using -e with a property ID or name.
+
+-g, --groupId <groupId> Enter the group ID for the property. Optional
+if using -e with a property ID or name.
+
+-p, --property <propertyName> Property name. Optional if a default
+property was previously set with the set-default command.
+#+end_example
+#+REVEAL_HTML: </div>
+
+
 
 ** Akamai CLI – PM – Property Update
 #+REVEAL_HTML: <div style="color: green">
@@ -166,23 +194,24 @@ version to update
 Activate an Akamai PM property
 #+REVEAL_HTML: </div>
 #+begin_example
-akamai pm -a accountID activate-version -m "Activation note"
--e email -p newconfig.name.com_pm --propver configversion
---file logic.json
+akamai pm -a accountID activate-version -m "Activivation note"
+-e "email list" -p newconfig.name.com_pm --propver configversion
+-n <network> -w
 #+end_example
 
 #+REVEAL_HTML: <div style="font-size: 80%;color: gray; margin-top: 8%">
 #+begin_example
---file <file> Specify the JSON file containing the rules. PM json
-specifications:
-https://techdocs.akamai.com/property-mgr/reference/rule-trees
-
---note <message> Alias of --message. Add comments for the property.
-
--p, --property <property> The name or ID of the property you are
-updating.
-
---propver <propver> Optional. Select the property version to update
+-m, --message <message>    Enter a message describing the reason for
+			   activating.
+-n, --network <network>    Network, either 'production' or 'staging'. You can
+			   shorten 'production' to 'prod' or 'p' and
+			   'staging' to 'stage' or 's'.
+-p, --property <property>  Property name or property ID. Optional if default
+			   property was previously set using set-default.
+--propver <propver>       Optional. The property version to activate. Uses
+			   latest version if not specified.
+-w, --wait-for-activate    Prevents you from entering more commands until
+			   activation is complete. May take several minutes.
 #+end_example
 #+REVEAL_HTML: </div>
 
